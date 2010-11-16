@@ -2,7 +2,10 @@ use inc::Module::Install;
 name 'Script-State';
 all_from 'lib/Script/State.pm';
 
-# requires '';
+requires 'PadWalker';
+requires 'Data::Dumper';
+requires 'Carp';
+requires 'File::Spec';
 
 tests 't/*.t';
 author_tests 'xt';
