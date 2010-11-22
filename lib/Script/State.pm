@@ -33,7 +33,7 @@ sub import {
         File::Spec->catpath($vol, $dirs, ".$file.pl");
     };
 
-    $SCRIPT_DATA = -r $DATAFILE ? do $DATAFILE : {};
+    $SCRIPT_DATA = -r $DATAFILE ? do { do $DATAFILE; no strict 'vars'; $VAR1 } : {};
 
     my $pkg = caller;
     no strict 'refs';
@@ -48,7 +48,7 @@ END {
         };
 
         my $vars = { map { $_ => ${ $VAR_REF->{$_} } } keys %$VAR_REF };
-        print $fh Data::Dumper->new([ $vars ])->Terse(1)->Indent(1)->Dump;
+        print $fh Data::Dumper->new([ $vars ])->Indent(1)->Purity(1)->Dump;
         close $fh;
     }
 }
