@@ -24,6 +24,21 @@ sub script_state {
     }
 }
 
+sub store {
+    if ($DATAFILE && $VAR_REF) {
+        open my $fh, '>', $DATAFILE or do {
+            warn "Could not open $DATAFILE: $!";
+            return;
+        };
+
+        my $vars = { map { $_ => ${ $VAR_REF->{$_} } } keys %$VAR_REF };
+        print $fh Data::Dumper->new([ $vars ])->Indent(1)->Purity(1)->Dump;
+        close $fh;
+
+        return 1;
+    }
+}
+
 sub import {
     my ($class, %args) = @_;
 
@@ -41,16 +56,7 @@ sub import {
 }
 
 END {
-    if ($DATAFILE && $VAR_REF) {
-        open my $fh, '>', $DATAFILE or do {
-            warn "Could not open $DATAFILE: $!";
-            return;
-        };
-
-        my $vars = { map { $_ => ${ $VAR_REF->{$_} } } keys %$VAR_REF };
-        print $fh Data::Dumper->new([ $vars ])->Indent(1)->Purity(1)->Dump;
-        close $fh;
-    }
+    __PACKAGE__->store;
 }
 
 1;
