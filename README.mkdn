@@ -4,11 +4,14 @@ Script::State - Keep script local variables
 
 # SYNOPSIS
 
-  use Script::State;
+    #!perl
+    use Script::State;
 
-  script_state my $count = 0;
+    script_state my $count = 0; # set to last value if exists
+    say $count++;
 
-  say $count++;
+    # automatically write $count's current value to external file
+    # to be read at next script execution
 
 # DESCRIPTION
 
@@ -17,8 +20,6 @@ Script::State stores local variables to file after script execution.
 # AUTHOR
 
 motemen <motemen {at} gmail.com>
-
-# SEE ALSO
 
 # LICENSE
 

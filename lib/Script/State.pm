@@ -69,11 +69,14 @@ Script::State - Keep script local variables
 
 =head1 SYNOPSIS
 
-  use Script::State;
+    #!perl
+    use Script::State;
 
-  script_state my $count = 0;
+    script_state my $count = 0; # set to last value if exists
+    say $count++;
 
-  say $count++;
+    # automatically write $count's current value to external file
+    # to be read at next script execution
 
 =head1 DESCRIPTION
 
@@ -82,8 +85,6 @@ Script::State stores local variables to file after script execution.
 =head1 AUTHOR
 
 motemen E<lt>motemen {at} gmail.comE<gt>
-
-=head1 SEE ALSO
 
 =head1 LICENSE
 
