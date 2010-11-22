@@ -16,7 +16,12 @@ sub script_state {
         Carp::croak('Invalid variable passed');
     };
     $VAR_REF->{$name} = \$_[0];
-    $_[0] = exists $SCRIPT_DATA->{$name} ? $SCRIPT_DATA->{$name} : $_[1];
+
+    if (exists $SCRIPT_DATA->{$name}) {
+        $_[0] = $SCRIPT_DATA->{$name};
+    } elsif ($#_ >= 1) {
+        $_[0] = $_[1];
+    }
 }
 
 sub import {
@@ -60,7 +65,7 @@ Script::State - Keep script local variables
 
   use Script::State;
 
-  script_state my $count => 0;
+  script_state my $count = 0;
 
   say $count++;
 

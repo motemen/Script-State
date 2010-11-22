@@ -6,7 +6,7 @@ Script::State - Keep script local variables
 
   use Script::State;
 
-  script_state my $count => 0;
+  script_state my $count = 0;
 
   say $count++;
 
