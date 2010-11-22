@@ -1,8 +1,8 @@
-=head1 NAME
+# NAME
 
 Script::State - Keep script local variables
 
-=head1 SYNOPSIS
+# SYNOPSIS
 
   use Script::State;
 
@@ -10,23 +10,17 @@ Script::State - Keep script local variables
 
   say $count++;
 
-=head1 DESCRIPTION
+# DESCRIPTION
 
 Script::State stores local variables to file after script execution.
 
-Try running
+# AUTHOR
 
-  perl -Ilib t/fib.pl; echo
+motemen <motemen {at} gmail.com>
 
-=head1 AUTHOR
+# SEE ALSO
 
-motemen E<lt>motemen {at} gmail.comE<gt>
-
-=head1 SEE ALSO
-
-=head1 LICENSE
+# LICENSE
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
-
-=cut

@@ -1,4 +1,5 @@
 use inc::Module::Install;
+
 name 'Script-State';
 all_from 'lib/Script/State.pm';
 
@@ -11,6 +12,10 @@ tests 't/*.t';
 author_tests 'xt';
 
 test_requires 'Test::More';
+
+readme_markdown_from_pod;
+
 auto_set_repository;
 auto_include;
+
 WriteAll;
