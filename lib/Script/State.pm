@@ -48,7 +48,7 @@ sub import {
         File::Spec->catpath($vol, $dirs, ".$file.pl");
     };
 
-    $SCRIPT_DATA = -r $DATAFILE ? do { do $DATAFILE; no strict 'vars'; $VAR1 } : {};
+    $SCRIPT_DATA = -r $DATAFILE ? do { do $DATAFILE; no strict 'vars'; $VAR1 } : {}; ## no critic
 
     my $pkg = caller;
     no strict 'refs';
