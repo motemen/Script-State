@@ -78,9 +78,42 @@ Script::State - Keep script local variables
     # automatically write $count's current value to external file
     # to be read at next script execution
 
+=head1 FUNCTIONS/METHODS
+
+=over 4
+
+=item script_state my $variable = $default;
+
+Keep this variable's state after script execution.
+
+=item Script::State->store;
+
+Explicitly store current state. This is called in END block.
+
+=back
+
 =head1 DESCRIPTION
 
 Script::State stores local variables to file after script execution.
+Values of scalar variables with C<script_state> are stored in another file,
+and the values are automatically loaded when script is executed at next time.
+
+=head1 HOW THIS WORKS
+
+Script::State stores variable states to file at same directory of script ($0).
+For example, if $0 eq 'foo/bar.pl', filename containing state is 'foo/.bar.pl.pl'.
+
+When Script::State is import()ed, it will load previous state from the state file,
+and at the time script_state() is called, bind corresponding value to the variable.
+
+When Script::State's END block is entered, this stores current variable values
+to the state file.
+
+=head1 CAVEATS
+
+This modules currently uses Data::Dumper::Dump and eval() to store/load state, maybe unsafe.
+
+This modules currently does not lock state files.
 
 =head1 AUTHOR
 
