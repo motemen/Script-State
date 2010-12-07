@@ -4,7 +4,7 @@ use warnings;
 use PadWalker qw(var_name);
 use Data::Dumper;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 our $DATAFILE;
 our $SCRIPT_DATA;

@@ -1,1 +1,1 @@
-steps = Manifest, FindVersion, ChangeVersion, DistTest, Commit, Tag, MakeDist, UploadCPAN
+steps = Manifest, FindVersion, ChangeVersion, CheckChangeLog, DistTest, Commit, Tag, MakeDist, UploadCPAN
