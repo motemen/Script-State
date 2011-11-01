@@ -8,3 +8,5 @@ __DATA__
 motemen
 motemen {at} gmail.com
 Script::State
+filename
+variable's

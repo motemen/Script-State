@@ -32,7 +32,7 @@ sub store {
         };
 
         my $vars = { map { $_ => ${ $VAR_REF->{$_} } } keys %$VAR_REF };
-        print $fh Data::Dumper->new([ $vars ])->Indent(1)->Purity(1)->Dump;
+        print $fh Data::Dumper->new([ $vars ])->Varname('VAR')->Terse(0)->Indent(1)->Purity(1)->Dump;
         close $fh;
 
         return 1;
